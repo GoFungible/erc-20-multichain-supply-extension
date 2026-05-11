@@ -1,0 +1,11 @@
+{
+  "name": "gofungible-interop-ierc20x",
+  "version": "1.0.0",
+  "private": true,
+	"scripts": {
+    "build": "npx solcjs --abi contracts/IERC20x.sol -o abi"
+  },
+  "devDependencies": {
+    "solc": "^0.8.30"
+  }
+}

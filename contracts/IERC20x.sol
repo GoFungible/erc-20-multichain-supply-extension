@@ -19,9 +19,10 @@ interface IERC20x {
      */
     function globalSupply() external view returns (uint256);
 
-
-    /// @inheritdoc IERC20
-    function balanceOfX(address account) public view virtual returns (uint256);
+    /**
+     * @dev Returns the value of tokens owned by `account`.
+     */
+    function balanceOfX(address account) external view returns (uint256);
 
     /**
      * @dev Moves a `value` amount of tokens from the caller's account to `to`.
