@@ -31,7 +31,7 @@ interface IERC20x {
      *
      * Emits a {Transfer} event.
      */
-    function transferX(address to, uint256 value) external returns (bool);
+    function transferX(uint256 toChain, address toAddress, uint256 amount) external returns (bool);
 
     /**
      * @dev Moves a `value` amount of tokens from `from` to `to` using the
@@ -42,6 +42,6 @@ interface IERC20x {
      *
      * Emits a {Transfer} event.
      */
-    function transfeXrFrom(address from, address to, uint256 value) external returns (bool);
+    function transferXFrom(address from, uint256 toChain, address toAddress, uint256 amount) external returns (bool);
 
 }
