@@ -42,6 +42,6 @@ interface IERC20x {
      *
      * Emits a {Transfer} event.
      */
-    function transferXFrom(address from, uint256 toChain, address toAddress, uint256 amount) external returns (bool);
+    //function transferXFrom(address from, uint256 toChain, address toAddress, uint256 amount) external returns (bool);
 
 }
