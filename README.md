@@ -4,7 +4,9 @@ ERC-74XX25: ERC-XXXX Multichain Supply Extension
 
 Title: ERC-XXXX Multichain Supply Extension
 
-Short Description: An ERC-20 multichain extension to guarantee supply integrity across networks
+Short Description: An ERC-20 multichain extension to determine token boundaries and supply
+
+
 
 Authors
 ----------
@@ -35,6 +37,20 @@ Address the problem of cross-chain supply.
 
 
 
+Rationale
+---------
+
+Fragmentation is an issue. Fragmentation ruins user interface.
+
+To overcome fragmentation, we need multichain tokens.
+
+Supply is the more important parameter in a token definition. Variation of the supply determines the nature of the tokens and the peg.
+
+Multichain tokens cannot control their cross supply. This brings problems and destroy decentralization.
+
+This standard proposes an exntension to control cross supply of multichain tokens that allows users know the boundaries of the token.
+
+
 
 State of Arts
 ----------
@@ -45,32 +61,11 @@ Some token standards are created for a single chain
 
 	* ERC-7943: uRWA - Universal Real World Asset Interface
 
-A few ERC standards focused on crosschain messaging:
-
-	* EIP-7786 - Cross-Chain Messaging Gateway
-
-	* EIP-7841 - Cross-chain Message Format and Mailbox
-
-Other standards focused on crosschain execution:
-
-	* EIP-5164 - Cross-Chain Execution
-
-	* ERC-8121: Cross-Chain Function Calls via Hooks
-
-	* ERC-7683 - Crosschain Intents: Introduction
-
-Other standards focused on crosschain bridging:
-
-	* ERC-7802 - Crosschain Token Interface
-
-	* ERC-7281: Sovereign Bridged Tokens - xERC20 Standard. xERC20 is a widely supported open token standard, aimed at solving the liquidity, fungibility, and security issues seen today with bridged ERC20s.
-
 Other providers focused on mutichain tokens:
 
 	* LayerZero, Axelar, Wormhole, Hyperlane have their proprietary multichain tokens.
 
 	* ERC-6358 created Omniverse tokens by cloning the state in all chains.
-
 
 
 
@@ -103,8 +98,13 @@ Implementation
 
 		balances
 
+    function networkkIds() external view returns (uint256);
+
+    function supply(unit256 networkId) public view virtual returns (uint256);
+
     function globalSupply() external view returns (uint256);
 
+		// not needed
     function balanceOfX(address account) public view virtual returns (uint256);
 
     function transferX(address to, uint256 value) external returns (bool);
@@ -113,14 +113,18 @@ Implementation
 
 
 
+Security Considerations
+----------
+
+Global Supply must reliably aggregate distributed supplies.
+
+
+
 
 Backwards Compatibility
 ----------
 
 
-
-Security Considerations
-----------
 
 
 
